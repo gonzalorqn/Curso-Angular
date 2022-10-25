@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Lista de personas</h1>
+    <button class="btn btn-primary" [disabled]="deshabilitar" (click)="agregarPersonaText()">Agregar persona</button>
+    <p *ngIf="mostrar; else sinPersona">{{mensaje}}</p>
+    <ng-template #sinPersona>
+        <p>No se ha agregado ninguna persona</p>
+    </ng-template>
+    <input type="text" class="form-control" [(ngModel)]="titulo">
+    {{titulo}}
+    <app-persona></app-persona>
+</div>
+<hr/>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div *ngFor="let persona of personas; let i = index">
+                {{i+1}}: {{persona.nombre}} {{persona.apellido}}
+                <button type="submit" class="btn btn-info" (click)="emitirSaludo(i)">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="container">
+    <app-formulario (personaCreada)="personaAgregada($event)"></app-formulario>
+</div>
