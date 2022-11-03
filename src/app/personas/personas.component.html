@@ -1,0 +1,16 @@
+<div class="container">
+    <button class="btn btn-primary" (click)="agregar()">Agregar persona</button>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div *ngFor="let persona of personas; let i = index">
+                {{i+1}}: {{persona.nombre}} {{persona.apellido}}
+                <button type="submit" class="btn btn-info" [routerLink]="['/personas', i]" [queryParams]="{modoEdicion: '1'}">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<router-outlet></router-outlet>
